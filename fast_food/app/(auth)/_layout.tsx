@@ -1,15 +1,18 @@
 import {
   View,
-  Text,
   KeyboardAvoidingView,
   Platform,
+  Image,
+  ScrollView,
   Dimensions,
 } from "react-native";
 import React from "react";
 import { Slot } from "expo-router";
-import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 import { ImageBackground } from "expo-image";
-import { images } from "../../constants";
+
+import { images } from "../../constants/index";
+import CustomInput from "../../components/CustomInput";
+import CustomButton from "../../components/CustomButton";
 
 export default function _layout() {
   return (
@@ -24,9 +27,15 @@ export default function _layout() {
           <ImageBackground
             source={images.loginGraphic}
             className="size-full rounded-b-lg"
-            resizeMode="stretch"
+            contentFit="fill"
+          />
+          <Image
+            source={images.logo}
+            className="self-center size-48 absolute -bottom-16 z-10"
           />
         </View>
+        <CustomInput />
+        <CustomButton />
       </ScrollView>
       <Slot />
     </KeyboardAvoidingView>
