@@ -8,11 +8,9 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-// eslint-disable-next-line import/no-unresolved
 import { images, offers } from "@/constants";
 import { Fragment } from "react";
 import cn from "clsx";
-// eslint-disable-next-line import/no-unresolved
 import CartButton from "@/components/CartButton";
 
 export default function Index() {

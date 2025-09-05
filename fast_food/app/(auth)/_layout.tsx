@@ -10,9 +10,9 @@ import React from "react";
 import { Slot } from "expo-router";
 import { ImageBackground } from "expo-image";
 
-import { images } from "../../constants/index";
-import CustomInput from "../../components/CustomInput";
-import CustomButton from "../../components/CustomButton";
+import { images } from "@/constants/index";
+import CustomInput from "@/components/CustomInput";
+import CustomButton from "@/components/CustomButton";
 
 export default function _layout() {
   return (
@@ -34,10 +34,8 @@ export default function _layout() {
             className="self-center size-48 absolute -bottom-16 z-10"
           />
         </View>
-        <CustomInput />
-        <CustomButton />
+        <Slot />
       </ScrollView>
-      <Slot />
     </KeyboardAvoidingView>
   );
 }
