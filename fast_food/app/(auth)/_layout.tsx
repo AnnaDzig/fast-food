@@ -1,18 +1,16 @@
+import { Slot } from "expo-router";
+import React from "react";
 import {
-  View,
+  Dimensions,
+  Image,
+  ImageBackground,
   KeyboardAvoidingView,
   Platform,
-  Image,
   ScrollView,
-  Dimensions,
+  View,
 } from "react-native";
-import React from "react";
-import { Slot } from "expo-router";
-import { ImageBackground } from "expo-image";
 
 import { images } from "@/constants/index";
-import CustomInput from "@/components/CustomInput";
-import CustomButton from "@/components/CustomButton";
 
 export default function _layout() {
   return (
@@ -27,7 +25,7 @@ export default function _layout() {
           <ImageBackground
             source={images.loginGraphic}
             className="size-full rounded-b-lg"
-            contentFit="fill"
+            resizeMode="stretch"
           />
           <Image
             source={images.logo}

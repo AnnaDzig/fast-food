@@ -1,8 +1,8 @@
-import { View, Text, Button, Alert } from "react-native";
-import React, { useState } from "react";
-import { Link, router } from "expo-router";
-import CustomInput from "@/components/CustomInput";
 import CustomButton from "@/components/CustomButton";
+import CustomInput from "@/components/CustomInput";
+import { Link, router } from "expo-router";
+import React, { useState } from "react";
+import { Alert, Button, Text, View } from "react-native";
 //import * as Sentry from "@sentry/react-native";
 
 const SignIn = () => {
