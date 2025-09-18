@@ -1,5 +1,4 @@
-import SignIn from "@/app/(auth)/sign-in";
-import { CreateUserParams } from "@/type";
+import { CreateUserParams, SignInParams } from "@/type";
 import { Account, Avatars, Client, Databases, ID } from "react-native-appwrite";
 
 export const appwriteConfig = {
@@ -30,21 +29,24 @@ export const createUser = async ({
     const newAccount = await account.create(ID.unique(), email, password, name);
     if (!newAccount) throw Error;
 
-    await SignIn({ email, password });
+    await signIn({ email, password });
 
     const avatarUrl = avatars.getInitialsURL(name);
 
-    const newUser = await databases.createDocument(
+    return await databases.createDocument(
       appwriteConfig.databaseId,
       appwriteConfig.userTableId,
       ID.unique(),
-      {
-        accountId: newAccount.$id,
-        email,
-        name,
-        avatarUrl,
-      }
+      { email, name, accountId: newAccount.$id, avatar: avatarUrl }
     );
+  } catch (e) {
+    throw new Error(e as string);
+  }
+};
+
+export const signIn = async ({ email, password }: SignInParams) => {
+  try {
+    const session = await account.createEmailPasswordSession(email, password);
   } catch (e) {
     throw new Error(e as string);
   }
