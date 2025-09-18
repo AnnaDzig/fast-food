@@ -29,8 +29,22 @@ export const createUser = async ({
   try {
     const newAccount = await account.create(ID.unique(), email, password, name);
     if (!newAccount) throw Error;
+
     await SignIn({ email, password });
+
     const avatarUrl = avatars.getInitialsURL(name);
+
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userTableId,
+      ID.unique(),
+      {
+        accountId: newAccount.$id,
+        email,
+        name,
+        avatarUrl,
+      }
+    );
   } catch (e) {
     throw new Error(e as string);
   }
